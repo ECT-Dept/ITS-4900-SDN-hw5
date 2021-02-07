@@ -1,5 +1,5 @@
 #vyos-get-version.yml - Get version
-#v1.1 - 2021-01-29
+
 #ansible-playbook -vv -i inventory.yml vyos-get-version.yml
 
 - name: VyOS - Get Version Detail

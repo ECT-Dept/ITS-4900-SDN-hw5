@@ -1,5 +1,5 @@
 #vyos-get-config-info.yml - Get VyOS Configuration Info
-#v1.1 - 2021-01-29
+
 #ansible-playbook -vvv -i inventory vyos-get-config-info.yml
 
 - name: VyOS Get Config Detail
