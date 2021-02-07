@@ -1,0 +1,12 @@
+routers:
+  hosts:
+    vyos-1:
+      ansible_host: 192.168.80.1
+    vyos-2:
+      ansible_host: 192.168.80.2
+    vyos-3:
+      ansible_host: 192.168.80.3
+    vyos-4:
+      ansible_host: 192.168.80.4
+    vyos-5:
+      ansible_host: 192.168.80.5

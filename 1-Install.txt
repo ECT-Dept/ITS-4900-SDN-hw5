@@ -1,0 +1,16 @@
+#Installing Ansible
+#v1.0 - 2021-02-05
+
+#Change VM to have 3 CPUs and 8192MB RAM
+#Run the follwwing commands on an Ubuntu-Ansible GNS3 terminal
+#Run them one at a time. If there are errors please ask for help.
+
+sudo hostname Ansible
+
+sudo apt update 
+
+sudo apt install -y ansible sshpass python3-paramiko
+
+ansible-galaxy collection install vyos.vyos
+
+reboot

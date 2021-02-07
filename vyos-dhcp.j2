@@ -1,0 +1,18 @@
+{% if interfaces is defined %}
+{% for interface in interfaces %}
+
+{# THIS IS A COMMENT #}
+{# {{ interface }} #} 
+
+{% if 'dhcp' in interface %}
+
+set service dhcp-server shared-network-name '{{ interface['dhcp_poolname'] }}' subnet '{{ interface['dhcp_subnet'] }}' range '{{ interface['dhcp_range1'] }}' start '{{ interface['dhcp_range1_start'] }}'
+set service dhcp-server shared-network-name '{{ interface['dhcp_poolname'] }}' subnet '{{ interface['dhcp_subnet'] }}' range '{{ interface['dhcp_range1'] }}' stop '{{ interface['dhcp_range1_stop'] }}'
+set service dhcp-server shared-network-name '{{ interface['dhcp_poolname'] }}' subnet '{{ interface['dhcp_subnet'] }}' dns-server '{{ interface['dhcp_dns1'] }}'
+set service dhcp-server shared-network-name '{{ interface['dhcp_poolname'] }}' subnet '{{ interface['dhcp_subnet'] }}' dns-server '{{ interface['dhcp_dns2'] }}'
+set service dhcp-server shared-network-name '{{ interface['dhcp_poolname'] }}' subnet '{{ interface['dhcp_subnet'] }}' default-router '{{ interface['dhcp_default_router'] }}'
+set service dhcp-server shared-network-name '{{ interface['dhcp_poolname'] }}' subnet '{{ interface['dhcp_subnet'] }}' lease '{{ interface['dhcp_lease_time'] }}'
+
+{% endif %}
+{% endfor %}
+{% endif %}

@@ -1,0 +1,24 @@
+{% if routes is defined %}
+{% for route in routes %}
+
+{# THIS IS A COMMENT #}
+{# {{ route }} #}
+
+{% if 'ospf' in route %}
+    
+set protocols ospf area '{{ route['ospf_area'] }}' network '{{ route['ospf_network'] }}'
+set protocols ospf log-adjacency-changes
+set protocols ospf redistribute connected metric-type '{{ route['ospf_metric'] }}'
+set protocols ospf redistribute connected route-map '{{ route['ospf_route_map_name'] }}'
+set policy route-map '{{ route['ospf_route_map_name'] }}' rule '{{ route['ospf_route_map_rule'] }}' action '{{ route['ospf_route_map_action'] }}'
+set policy route-map '{{ route['ospf_route_map_name'] }}' rule '{{ route['ospf_route_map_rule'] }}' match interface '{{ route['ospf_route_map_match_interface'] }}'
+
+{% elif 'ospf_default_route' in route %}
+
+set protocols ospf default-information originate '{{ route['ospf_default_information_originate'] }}'
+set protocols ospf default-information originate metric '{{ route['ospf_default_information_metric'] }}'
+set protocols ospf default-information originate metric-type '{{ route['ospf_default_information_metric_type'] }}'
+
+{% endif %}
+{% endfor %}
+{% endif %}

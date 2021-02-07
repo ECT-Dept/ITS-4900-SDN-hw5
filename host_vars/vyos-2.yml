@@ -1,0 +1,30 @@
+interfaces:
+  - vyos_if: "eth0"
+    desc: "Net7"
+    ipv4_addr: "172.18.7.1/24"
+    enabled: "true"    
+    
+  - vyos_if: "eth1"
+    desc: "Net7"
+    ipv4_addr: "172.18.9.1/24"
+    enabled: "true"
+
+  - vyos_if: "eth2"
+    desc: "Net11"
+    ipv4_addr: "172.18.11.254/24"
+    enabled: "true"
+
+  - vyos_if: "eth3"
+    desc: "Net12"
+    ipv4_addr: "172.18.12.254/24"
+    enabled: "true"
+  
+routes:
+  - ospf: "enable"
+    ospf_area: "0"
+    ospf_network: "172.18.0.0/17"
+    ospf_metric: "2"
+    ospf_route_map_name: "CONNECT"
+    ospf_route_map_rule: "10"
+    ospf_route_map_action: "permit"
+    ospf_route_map_match_interface: "lo"

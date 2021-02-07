@@ -1,0 +1,35 @@
+interfaces:
+  - vyos_if: "eth0"
+    desc: "WAN"
+    ipv4_addr: "132.235.160.222/26"
+    enabled: "true"
+    nat: "enable"
+    nat_private_range: "172.18.1.0/17"
+
+  - vyos_if: "eth1"
+    desc: "Net7"
+    ipv4_addr: "172.18.7.254/24"
+    enabled: "true"
+
+  - vyos_if: "eth2"
+    desc: "Net8"
+    enabled: "true"
+    ipv4_addr: "172.18.8.254/24"
+
+routes:
+  - default_route: "0.0.0.0/0"
+    nexthop: "132.235.160.254"
+  
+  - ospf: "enable"
+    ospf_area: "0"
+    ospf_network: "172.18.0.0/17"
+    ospf_metric: "2"
+    ospf_route_map_name: "CONNECT"
+    ospf_route_map_rule: "10"
+    ospf_route_map_action: "permit"
+    ospf_route_map_match_interface: "lo"
+
+  - ospf_default_route: "enable"
+    ospf_default_information_originate: "always"
+    ospf_default_information_metric: "10"
+    ospf_default_information_metric_type: "2"
