@@ -1,60 +1,65 @@
-#v1.0 - 2021-02-05
+X = vm_num
+Y = private_172_net
+W = WAN IP
 
-172.18.1.0/17 - Dividied up into 128 /24's
+See Blackboard for student specific values
+
+
+172.Y.1.0/17 - Dividied up into 128 /24's
 
 http://www.davidc.net/sites/default/subnets/subnets.html?network=172.18.0.0&mask=17&division=255.f7239399c399c9c4e399c9c4e9c4e462f399c9c4e9c4e462f9c4e462f4627231
 
-Admin Config Mgt Network - 192.168.80.0/24
-Net 1  - 172.18.1.0/24 - VyOS-4 eth2 .254  - VPCS-1 - DHCP
-Net 2  - 172.18.2.0/24 - VyOS-5 eth2 .254  - VPCS-2 - DHCP
-Net 3  - 172.18.3.0/24 - VyOS-3 eth2 .254  - VPCS-3 - DHCP
-Net 4  - 172.18.4.0/24
-Net 5  - 172.18.5.0/24
-Net 6  - 172.18.6.0/24 - VyOS-4 eth1 .1    - VyOS-5 eth1 .2
-Net 7  - 172.18.7.0/24 - VyOS-1 eth1 .254  - VyOS-2 eth0 .1
-Net 8  - 172.18.8.0/24 - VyOS-1 eth2 .254  - VyOS-3 eth0 .1
-Net 9  - 172.18.9.0/24 - VyOS-2 eth1 .1    - VyOS-3 eth0 .2
-Net 10 - 172.18.10.0/24
-Net 11 - 172.18.11.0/24 - VyOS-2 eth2 .254 - VyOS-4 eth0 .1
-Net 12 - 172.18.12.0/24 - VyOS-2 eth3 .254 - VyOS-5 eth0 .1
-Net 13 - 172.18.13.0/24 - OSPF lo address  - VyOS-1 lo .1, VyOS-2 lo .2 and so on
+Admin Config Mgt Network - 192.168.X.0/24
+Net 1  - 172.Y.1.0/24 - VyOS-4 eth2 .254  - VPCS-1 - DHCP
+Net 2  - 172.Y.2.0/24 - VyOS-5 eth2 .254  - VPCS-2 - DHCP
+Net 3  - 172.Y.3.0/24 - VyOS-3 eth2 .254  - VPCS-3 - DHCP
+Net 4  - 172.Y.4.0/24
+Net 5  - 172.Y.5.0/24
+Net 6  - 172.Y.6.0/24 - VyOS-4 eth1 .1    - VyOS-5 eth1 .2
+Net 7  - 172.Y.7.0/24 - VyOS-1 eth1 .254  - VyOS-2 eth0 .1
+Net 8  - 172.Y.8.0/24 - VyOS-1 eth2 .254  - VyOS-3 eth0 .1
+Net 9  - 172.Y.9.0/24 - VyOS-2 eth1 .1    - VyOS-3 eth0 .2
+Net 10 - 172.Y.10.0/24
+Net 11 - 172.Y.11.0/24 - VyOS-2 eth2 .254 - VyOS-4 eth0 .1
+Net 12 - 172.Y.12.0/24 - VyOS-2 eth3 .254 - VyOS-5 eth0 .1
+Net 13 - 172.Y.13.0/24 - OSPF lo address  - VyOS-1 lo .1, VyOS-2 lo .2 and so on
 
 
-Ansible - eth7 - 192.168.80.250
+Ansible - eth7 - 192.168.X.250
 	  eth0 - DHCP to NAT Cloud
 
-VyOS-1 - eth7 - 192.168.80.1/24 - Mgt Interface
-	 eth0 - 132.235.160.222/26 - WAN - NAT here for 172.18.1.0/17 
-	 eth1 - 172.18.7.254/24 - Net7
-	 eth2 - 172.18.8.254/24 - Net8
+VyOS-1 - eth7 - 192.168.X.1/24 - Mgt Interface
+	 eth0 - 132.235.160.W/26 - WAN - NAT here for 172.Y.1.0/17 
+	 eth1 - 172.Y.7.254/24 - Net7
+	 eth2 - 172.Y.8.254/24 - Net8
 
-VyOS-2 - eth7 - 192.168.80.2/24 - Mgt Interface
-	 eth0 - 172.18.7.1/24 - Net7
-	 eth1 - 172.18.9.1/24 - Net9
-	 eth2 - 172.18.11.254/24 - Net11
-	 eth3 - 172.18.12.254/24 - Net12
+VyOS-2 - eth7 - 192.168.X.2/24 - Mgt Interface
+	 eth0 - 172.Y.7.1/24 - Net7
+	 eth1 - 172.Y.9.1/24 - Net9
+	 eth2 - 172.Y.11.254/24 - Net11
+	 eth3 - 172.Y.12.254/24 - Net12
 
-VyOS-3 - eth7 - 192.168.80.3/24 - Mgt Interface
-	 eth0 - 172.18.8.1/24 - Net8
-	 eth1 - 172.18.9.2/24 - Net9
-	 eth2 - 172.18.3.254/24 - Net3
+VyOS-3 - eth7 - 192.168.X.3/24 - Mgt Interface
+	 eth0 - 172.Y.8.1/24 - Net8
+	 eth1 - 172.Y.9.2/24 - Net9
+	 eth2 - 172.Y.3.254/24 - Net3
 
-VyOS-4 - eth7 - 192.168.80.4/24 - Mgt Interface
-	 eth0 - 172.18.11.1/24 - Net11
-	 eth1 - 172.18.6.1/24 - Net6
-	 eth2 - 172.18.1.254/24 - Net1 - DHCP here for Client
+VyOS-4 - eth7 - 192.168.X.4/24 - Mgt Interface
+	 eth0 - 172.Y.11.1/24 - Net11
+	 eth1 - 172.Y.6.1/24 - Net6
+	 eth2 - 172.Y.1.254/24 - Net1 - DHCP here for Client
 
-VyOS-5 - eth7 - 192.168.80.5/24 - Mgt Interface
-	 eth0 - 172.18.12.1/24 - Net12
-	 eth1 - 172.18.6.2/24 - Net6
-	 eth2 - 172.18.2.254/24 - Net 2 - DHCP here for Client
+VyOS-5 - eth7 - 192.168.X.5/24 - Mgt Interface
+	 eth0 - 172.Y.12.1/24 - Net12
+	 eth1 - 172.Y.6.2/24 - Net6
+	 eth2 - 172.Y.2.254/24 - Net 2 - DHCP here for Client
 
 
 
 #VyOS-1 Config
 config
 set interfaces ethernet eth7 description MgtNet
-set interfaces ethernet eth7 address 192.168.80.1/24
+set interfaces ethernet eth7 address 192.168.X.1/24
 commit
 save
 exit
@@ -63,7 +68,7 @@ exit
 #VyOS-2 Config
 config
 set interfaces ethernet eth7 description MgtNet
-set interfaces ethernet eth7 address 192.168.80.2/24
+set interfaces ethernet eth7 address 192.168.X.2/24
 commit
 save
 exit
@@ -72,7 +77,7 @@ exit
 #VyOS-3 Config
 config
 set interfaces ethernet eth7 description MgtNet
-set interfaces ethernet eth7 address 192.168.80.3/24
+set interfaces ethernet eth7 address 192.168.X.3/24
 commit
 save
 exit
@@ -81,7 +86,7 @@ exit
 #VyOS-4 Config
 config
 set interfaces ethernet eth7 description MgtNet
-set interfaces ethernet eth7 address 192.168.80.4/24
+set interfaces ethernet eth7 address 192.168.X.4/24
 commit
 save
 exit
@@ -90,7 +95,7 @@ exit
 #VyOS-5 Config
 config
 set interfaces ethernet eth7 description MgtNet
-set interfaces ethernet eth7 address 192.168.80.5/24
+set interfaces ethernet eth7 address 192.168.X.5/24
 commit
 save
 exit
@@ -98,6 +103,6 @@ exit
 
 
 #Webserver
-sudo nmcli con mod "Wired connection 1" ipv4.addresses 192.168.80.200/24
+sudo nmcli con mod "Wired connection 1" ipv4.addresses 192.168.X.200/24
 sudo nmcli con mod "Wired connection 1" ipv4.method manual
 sudo nmcli con down "Wired connection 1" && sudo nmcli con up "Wired connection 1"
