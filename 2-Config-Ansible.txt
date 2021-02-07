@@ -1,0 +1,15 @@
+#Configure Ansible Environment
+#v1.0 - 2021-02-05
+
+#Create directory off of home directory
+#All ansible commands will be run in this directory
+
+mkdir hw5
+cd hw5
+mkdir inventory
+mkdir group_vars
+mkdir host_vars
+
+#Download files from http://www.its.ohio.edu/its-4900-sdn/hw5 into the correct part of the directory structure.
+
+#Edit inventory/routers.yml and inventory/servers.yml to match specific hosts (routers).

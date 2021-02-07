@@ -1,0 +1,21 @@
+#VyOS and Ansible Ad-Hoc Ansible Tests
+#v1.0 - 2021-02-05
+
+#Ansible Ad-Hoc Tests 
+#Check Inventory
+ansible-inventory -i inventory --list -y
+
+#Network Test
+ansible -i inventory all -m ping
+ansible -i inventory all -a "df -h"
+
+
+#Need these to check config on VyOS Routers AFTER they are configed by Ansible
+
+#VyOS Routing/OSPF Tests
+show ip route 
+show ip ospf route 
+
+#VyOS CLI DHCP Tests
+show dhcp server statistics 
+show dhcp server leases

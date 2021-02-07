@@ -1,0 +1,6 @@
+ansible_become: yes
+#this line needed if sudo is required used with --ask-become-pass cli option
+ansible_become_pass: <itsclass-pw>
+ansible_connection: ssh
+ansible_ssh_pass: <itsclass-pw>
+ansible_python_interpreter: /usr/bin/python3
