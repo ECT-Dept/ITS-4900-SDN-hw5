@@ -11,7 +11,7 @@ mkdir host_vars
 
 #Download files from https://github.com/ECT-Dept/ITS-4900-SDN-hw5 into the correct part of the directory structure.
 
-#Edit the following files to match specific host IPs.
+#Edit the files to match specific host IPs.
 0-Network-and-Object-Config.txt
 1-Install.txt
 2-Config-Ansible.txt
