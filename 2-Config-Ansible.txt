@@ -1,7 +1,7 @@
-Configure Ansible Environment
+#Configure Ansible Environment
 
-Create directory off of home directory
-All ansible commands will be run in this directory
+#Create directory off of home directory
+#All ansible commands will be run in this directory
 
 mkdir hw5
 cd hw5
@@ -9,18 +9,25 @@ mkdir inventory
 mkdir group_vars
 mkdir host_vars
 
-Download files from https://github.com/ECT-Dept/ITS-4900-SDN-hw5 into the correct part of the directory structure.
+#Download files from https://github.com/ECT-Dept/ITS-4900-SDN-hw5 into the correct part of the directory structure.
 
-Edit the following files to match specific host IPs.
+#Edit the following files to match specific host IPs.
 0-Network-and-Object-Config.txt
+1-Install.txt
+2-Config-Ansible.txt
+3-VyOS and Ansible Tests.txt
 inventory/routers.yml
 inventory/servers.yml 
+group_vars/all.yml
+group_vars/routers.yml
+group_vars/servers.yml
 host_vars/vyos-1.yml
 host_vars/vyos-2.yml
 host_vars/vyos-3.yml
 host_vars/vyos-4.yml
 host_vars/vyos-5.yml
 
+#Config Ansible SSH defaults.
 
 sudo nano /etc/ansible/ansible.cfg
 
