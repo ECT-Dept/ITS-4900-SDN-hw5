@@ -16,6 +16,7 @@ mkdir host_vars
 1-Install.txt
 2-Config-Ansible.txt
 3-VyOS and Ansible Tests.txt
+ansible.cfg
 inventory/routers.yml
 inventory/servers.yml 
 group_vars/all.yml
@@ -26,10 +27,3 @@ host_vars/vyos-2.yml
 host_vars/vyos-3.yml
 host_vars/vyos-4.yml
 host_vars/vyos-5.yml
-
-#Config Ansible SSH defaults.
-
-sudo nano /etc/ansible/ansible.cfg
-
-[defaults]
-host_key_checking = False
