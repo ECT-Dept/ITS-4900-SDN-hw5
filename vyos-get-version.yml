@@ -1,6 +1,6 @@
 #vyos-get-version.yml - Get version
 
-#ansible-playbook -vv -i inventory.yml vyos-get-version.yml
+#ansible-playbook -vv -i inventory vyos-get-version.yml
 
 - name: VyOS - Get Version Detail
   hosts: routers
