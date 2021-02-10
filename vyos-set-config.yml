@@ -2,6 +2,7 @@
 #ansible-playbook -vvv -i inventory vyos-set-config.yml -l routers
 #ansible-playbook -vvv -i inventory vyos-set-config.yml -l routers --tags hostname,ipv4-config
 #Docs: https://docs.ansible.com/ansible/latest/collections/vyos/vyos
+#https://docs.ansible.com/ansible/latest/collections/vyos/vyos/vyos_static_route_module.html#ansible-collections-vyos-vyos-vyos-static-route-module
 #Use the depricated commands because they work with the currently installed version of Ansible installed
 #Jinja checker: https://jinjafx.io
 #https://jinja.palletsprojects.com/en/2.11.x/templates/#builtin-tests
