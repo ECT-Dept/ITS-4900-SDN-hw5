@@ -1,0 +1,12 @@
+#ansible-playbook -v -i inventory vyos-set-remove-ospf.yml
+
+#Removes all OSPF Config from router
+
+- hosts: routers
+  tasks:
+  - name: VyOS - Remove OSPF
+    vyos_config:
+      lines:
+        - delete protocols ospf
+    tags:
+      - remove-ospf
