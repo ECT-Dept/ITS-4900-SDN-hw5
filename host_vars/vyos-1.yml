@@ -3,7 +3,7 @@ interfaces:
     desc: "WAN"
     ipv4_addr: "132.235.160.W/26"
     enabled: "true"
-    nat: "enable"
+    nat: true
     nat_private_range: "172.Y.1.0/17"
 
   - vyos_if: "eth1"
@@ -20,7 +20,7 @@ routes:
   - default_route: "0.0.0.0/0"
     nexthop: "132.235.160.254"
   
-  - ospf: "true"
+  - ospf: true
     ospf_area: "0"
     ospf_network: "172.Y.0.0/17"
     ospf_metric: "2"

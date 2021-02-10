@@ -2,20 +2,18 @@
 #ansible-playbook -vvv -i inventory vyos-set-config.yml -l routers
 #ansible-playbook -vvv -i inventory vyos-set-config.yml -l routers --tags hostname,ipv4-config
 #Docs: https://docs.ansible.com/ansible/latest/collections/vyos/vyos
-#https://docs.ansible.com/ansible/latest/collections/vyos/vyos/vyos_static_route_module.html#ansible-collections-vyos-vyos-vyos-static-route-module
-#Use the depricated commands because they work with the currently installed version of Ansible installed
+#Use the depricated commands because they work with the version of Ansible installed
 #Jinja checker: https://jinjafx.io
 #https://jinja.palletsprojects.com/en/2.11.x/templates/#builtin-tests
 #YAML to CSV
 #http://www.convertcsv.com/newsite/yaml-to-csv.htm
 
-- hosts: all
+- hosts: routers
   tasks:
   - name: VyOS - Set hostname
     vyos_system:
       host_name: "{{ inventory_hostname }}"
-    tags:
-      - hostname
+    tags: hostname
       
   - name: VyOS - Config Interfaces
     vyos_interfaces:
@@ -23,8 +21,7 @@
         - name: "{{ item.vyos_if }}"
           description: "{{ item.desc }}"
           enabled: "{{ item.enabled }}"
-    tags:
-      - interfaces
+    tags: interfaces
     loop: "{{ interfaces }}"
 
   - name: VyOS - Config IPv4 IPs
@@ -33,55 +30,47 @@
         - name: "{{ item.vyos_if }}"
           ipv4:
             - address: "{{ item.ipv4_addr }}"
-    tags:
-      - ipv4-config
-    when:
-      - item.ipv4_addr is defined
+    tags: ipv4-config
+    when: item.ipv4_addr is defined
     loop: "{{ interfaces }}"
     
   - name: VyOS - Config Default Route
     vyos_static_route:
       prefix: "{{ item.default_route }}"
       next_hop: "{{ item.nexthop }}"
-    tags:
-      - default-route
-    when:
-      - item.default_route is defined
+    tags: default-route
+    when: item.default_route is defined
     loop: "{{ routes }}"
 
   - name: VyOS - Config NAT
     vyos_config:
       src: vyos-nat.j2
-    tags:
-      - nat-config
+    tags: nat-config
+    when: item.nat is defined and item.nat == true #When host var nat = true
     loop: "{{ interfaces }}"
 
   - name: VyOS - Config DHCP
     vyos_config:
       src: vyos-dhcp.j2
-    tags:
-      - dhcp-config
-    loop: "{{ interfaces }}"
+    when: item.dhcp is defined and item.dhcp == true
+    tags: dhcp-config 
+    loop: "{{ dhcp_pools }}"
 
   - name: VyOS - Config OSPF
     vyos_config:
       src: vyos-ospf.j2
-    tags:
-      - ospf-config
+    tags: ospf-config
+    when: item.ospf is defined and item.ospf == true #When host var osfp = true
     loop: "{{ routes }}"
 
   - name: VyOS - Remove OSPF
     vyos_config:
-      lines:
-        - delete protocols ospf
-    tags:
-      - remove-ospf    
-    when:
-      - item.ospf is "false"
+      lines: delete protocols ospf
+    tags: remove-ospf
+    when: item.ospf is defined and item.ospf == false #When ospf = false
     loop: "{{ routes }}"
 
 #  - name: VyOS - Save Configuration
 #    vyos_config:
 #      save: true
-#    tags:
-#      - vyos-save
+#    tags: vyos-save

@@ -14,10 +14,11 @@ interfaces:
     ipv4_addr: "172.Y.3.254/24"
     enabled: "true"
 
-    dhcp: "true"
+dhcp_pools:
+  - dhcp: true
     dhcp_subnet: "172.Y.3.0/24"
     dhcp_poolname: "NETWORK3"
-    dhcp_range1: "N1-RANGE3"
+    dhcp_range1: "N3-RANGE3"
     dhcp_range1_start: "172.Y.3.100"
     dhcp_range1_stop: "172.Y.3.200"
     dhcp_dns1: "132.235.9.75"
@@ -26,7 +27,7 @@ interfaces:
     dhcp_lease_time: "120"
 
 routes:
-  - ospf: "true"
+  - ospf: true
     ospf_area: "0"
     ospf_network: "172.Y.0.0/17"
     ospf_metric: "2"

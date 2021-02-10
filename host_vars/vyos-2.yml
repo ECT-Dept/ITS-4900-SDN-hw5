@@ -20,7 +20,7 @@ interfaces:
     enabled: "true"
   
 routes:
-  - ospf: "true"
+  - ospf: true
     ospf_area: "0"
     ospf_network: "172.Y.0.0/17"
     ospf_metric: "2"
