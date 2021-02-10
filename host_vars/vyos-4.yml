@@ -13,6 +13,7 @@ interfaces:
     desc: "Net1"
     ipv4_addr: "172.Y.1.254/24"
     enabled: "true"
+    
     dhcp: "enabled"
     dhcp_subnet: "172.Y.1.0/24"
     dhcp_poolname: "NETWORK1"

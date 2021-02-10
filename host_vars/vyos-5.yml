@@ -13,7 +13,8 @@ interfaces:
     desc: "Net2"
     ipv4_addr: "172.Y.2.254/24"
     enabled: "true"
-    dhcp: "enabled"
+
+    dhcp: "true"
     dhcp_subnet: "172.Y.2.0/24"
     dhcp_poolname: "NETWORK2"
     dhcp_range1: "N1-RANGE2"
@@ -25,7 +26,7 @@ interfaces:
     dhcp_lease_time: "120"
     
 routes:
-  - ospf: "enable"
+  - ospf: "true"
     ospf_area: "0"
     ospf_network: "172.Y.0.0/17"
     ospf_metric: "2"

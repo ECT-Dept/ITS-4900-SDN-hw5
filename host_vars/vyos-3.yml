@@ -13,7 +13,8 @@ interfaces:
     desc: "Net3"
     ipv4_addr: "172.Y.3.254/24"
     enabled: "true"
-    dhcp: "enabled"
+
+    dhcp: "true"
     dhcp_subnet: "172.Y.3.0/24"
     dhcp_poolname: "NETWORK3"
     dhcp_range1: "N1-RANGE3"
@@ -23,9 +24,9 @@ interfaces:
     dhcp_dns2: "132.235.200.41"
     dhcp_default_router: "172.Y.3.254"
     dhcp_lease_time: "120"
-     
+
 routes:
-  - ospf: "enable"
+  - ospf: "true"
     ospf_area: "0"
     ospf_network: "172.Y.0.0/17"
     ospf_metric: "2"

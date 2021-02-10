@@ -70,6 +70,16 @@
       - ospf-config
     loop: "{{ routes }}"
 
+  - name: VyOS - Remove OSPF
+    vyos_config:
+      lines:
+        - delete protocols ospf
+    tags:
+      - remove-ospf    
+    when:
+      - item.ospf is "false"
+    loop: "{{ routes }}"
+
 #  - name: VyOS - Save Configuration
 #    vyos_config:
 #      save: true

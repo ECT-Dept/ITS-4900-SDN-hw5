@@ -20,7 +20,7 @@ routes:
   - default_route: "0.0.0.0/0"
     nexthop: "132.235.160.254"
   
-  - ospf: "enable"
+  - ospf: "true"
     ospf_area: "0"
     ospf_network: "172.Y.0.0/17"
     ospf_metric: "2"
